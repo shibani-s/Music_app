@@ -5,12 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/music"
     tools:context=".ListActivity" >
 
     <ListView
-        android:id="@+id/country_list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:id="@+id/song_list"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:fastScrollEnabled="true"
+        android:scrollbarStyle="insideInset"
+        android:textFilterEnabled="false"
+        android:divider="@null"
+        android:textColor="#FF0000"
+        android:layout_margin="0dp"
+        android:paddingTop="0dp"
+        android:paddingBottom="0dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="22dp">
     </ListView>
+
 
 </LinearLayout>
