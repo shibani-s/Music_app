@@ -40,7 +40,7 @@ import android.widget.SimpleAdapter;
 public class FirstPage extends Activity implements MediaPlayerControl {
 
     private ProgressDialog pDialog;
-    private static String url_create_product = "http://2a66d92a.ngrok.com/create_product.php";
+    private static String url_create_product = "http://783d1e28.ngrok.com/create_product.php";
     private static String url_all_products = "http://5b3341d8.ngrok.com/get_all_products.php";
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_PRODUCTS = "products";

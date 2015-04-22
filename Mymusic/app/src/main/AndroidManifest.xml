@@ -25,6 +25,15 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".DisplayAllSongs"
+            android:label="Mymusic"></activity>
+        <activity
+            android:name=".DisplayAlbum"
+            android:label="Mymusic"></activity>
+        <activity
+            android:name=".DisplayArtists"
+            android:label="Mymusic"></activity>
+        <activity
             android:name=".FirstPage"
             android:label="Mymusic"></activity>
 

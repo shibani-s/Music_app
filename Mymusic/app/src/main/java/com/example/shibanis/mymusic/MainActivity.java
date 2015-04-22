@@ -29,7 +29,7 @@ import android.view.View;
 public class MainActivity extends Activity {
 
     // Array of strings...
-    String[] Tasks = {"sleeping", "driving", "cleaning", "studying"};
+    String[] Tasks = {"artists", "albums", "allsongs",};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,12 +53,27 @@ public class MainActivity extends Activity {
                 String product = ((TextView) view).getText().toString();
 
                 // Launching new Activity on selecting single List Item
-                Intent i = new Intent(getApplicationContext(), FirstPage.class);
-                // sending data to new activity
+                if(product.equals("allsongs")) {
+                    Intent i = new Intent(getApplicationContext(), DisplayAllSongs.class);
+                    // sending data to new activity
 
-                i.putExtra("product", product);
-                startActivity(i);
+                    i.putExtra("product", product);
+                    startActivity(i);
+                }
+                else if(product.equals("albums")) {
+                    Intent i = new Intent(getApplicationContext(), DisplayAlbum.class);
+                    // sending data to new activity
 
+                    i.putExtra("product", product);
+                    startActivity(i);
+                }
+                else if(product.equals("artists")) {
+                    Intent i = new Intent(getApplicationContext(), DisplayArtists.class);
+                    // sending data to new activity
+
+                    i.putExtra("product", product);
+                    startActivity(i);
+                }
             }
         });
     }

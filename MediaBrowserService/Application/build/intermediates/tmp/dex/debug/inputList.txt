@@ -1,0 +1,7 @@
+C:\Users\shibanis\Desktop\MediaBrowserService\Application\build\intermediates\classes\debug
+C:\Users\shibanis\Desktop\MediaBrowserService\Application\build\intermediates\pre-dexed\debug\internal_impl-21.0.2-0c28e4401c5f802a06cb3393eec89fbac633fa02.jar
+C:\Users\shibanis\Desktop\MediaBrowserService\Application\build\intermediates\pre-dexed\debug\support-annotations-21.0.2-096d63421890cf6ec02897f2ab919bcfc654308a.jar
+C:\Users\shibanis\Desktop\MediaBrowserService\Application\build\intermediates\pre-dexed\debug\classes-bf6e5944a8d046eb55ae4d52853b38d4cc4f3d3a.jar
+C:\Users\shibanis\Desktop\MediaBrowserService\Application\build\intermediates\pre-dexed\debug\classes-11dd9f4619acb5be43bb13875cd43b9782cb73ef.jar
+C:\Users\shibanis\Desktop\MediaBrowserService\Application\build\intermediates\pre-dexed\debug\internal_impl-21.0.2-9c60bdcd4e05f3d14459963669883cdee6e3b5d3.jar
+C:\Users\shibanis\Desktop\MediaBrowserService\Application\build\intermediates\pre-dexed\debug\classes-fe8deba22cc4f1a9c0a78be71594e19495443b1f.jar
