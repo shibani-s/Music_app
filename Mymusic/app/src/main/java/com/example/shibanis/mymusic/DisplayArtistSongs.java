@@ -37,11 +37,11 @@ import android.os.AsyncTask;
 import android.widget.MediaController.MediaPlayerControl;
 import android.widget.SimpleAdapter;
 
-public class DisplayAllSongs extends Activity implements MediaPlayerControl {
+public class DisplayArtistSongs extends Activity implements MediaPlayerControl {
 
     private ProgressDialog pDialog;
     private static String url_create_product = "http://3f99cca3.ngrok.com/create_product.php";
-    private static String url_all_products = "http://5b3341d8.ngrok.com/get_all_products.php";
+    private static String url_display_songs = "http://3f99cca3.ngrok.com/displayartistsongs.php";
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_PRODUCTS = "products";
     private static final String TAG_PID = "pid";
@@ -82,13 +82,13 @@ public class DisplayAllSongs extends Activity implements MediaPlayerControl {
         Bundle extras= getIntent().getExtras();
         str=extras.getString("product");
         Log.d("shib1",str);
-        setContentView(R.layout.displayallsongs);
-        songView = (ListView) findViewById(R.id.song_list1);
+        setContentView(R.layout.displayartistsongs);
+        songView = (ListView) findViewById(R.id.song_list);
         songList = new ArrayList<Song>();
 
-            getSongList();
+        getSongList();
 
-       // new UpdateDB().execute();
+        // new UpdateDB().execute();
 
 
         Collections.sort(songList, new Comparator<Song>() {
@@ -158,7 +158,7 @@ public class DisplayAllSongs extends Activity implements MediaPlayerControl {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog = new ProgressDialog(DisplayAllSongs.this);
+            pDialog = new ProgressDialog(DisplayArtistSongs.this);
             pDialog.setMessage("Loading products. Please wait...");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(false);
@@ -246,7 +246,7 @@ public class DisplayAllSongs extends Activity implements MediaPlayerControl {
                             return a.getTitle().compareTo(b.getTitle());
                         }
                     });
-                    SongAdapter songAdt = new SongAdapter(DisplayAllSongs.this, songList);
+                    SongAdapter songAdt = new SongAdapter(DisplayArtistSongs.this, songList);
                     songView.setAdapter(songAdt);
                     setController();
                 }
@@ -297,8 +297,10 @@ public class DisplayAllSongs extends Activity implements MediaPlayerControl {
                 params.add(new BasicNameValuePair("Year", thisYear ));
                 //    new UpdateDB(params).execute();
 
-
-                songList.add(new Song(thisId, thisTitle, thisArtist));
+                if(thisArtist.equals(str)) {
+                    Log.d("mytag","first");
+                    songList.add(new Song(thisId, thisTitle, thisArtist));
+                }
                 i++;
 
             }

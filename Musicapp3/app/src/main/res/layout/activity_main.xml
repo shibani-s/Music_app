@@ -1,22 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:orientation="vertical"
     android:background="@drawable/music"
-    tools:context=".ListActivity" >
 
-    <Button android:id="@+id/button"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:paddingTop="0dp"
-        android:paddingBottom="0dp"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
-        android:textSize="20dp"
-        android:text="+" />
+    tools:context=".MainActivity" >
 
     <ListView
         android:id="@+id/song_list"
@@ -26,7 +15,7 @@
         android:scrollbarStyle="insideInset"
         android:textFilterEnabled="false"
         android:divider="@null"
-        android:textColor="#FF0000"
+        android:textColor="#fffb00"
         android:layout_margin="0dp"
         android:paddingTop="0dp"
         android:paddingBottom="0dp"
@@ -34,5 +23,5 @@
         android:paddingRight="22dp">
     </ListView>
 
-
 </LinearLayout>
+

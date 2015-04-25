@@ -37,10 +37,10 @@ import android.os.AsyncTask;
 import android.widget.MediaController.MediaPlayerControl;
 import android.widget.SimpleAdapter;
 
-public class DisplayAllSongs extends Activity implements MediaPlayerControl {
+public class FirstPage extends Activity implements MediaPlayerControl {
 
     private ProgressDialog pDialog;
-    private static String url_create_product = "http://3f99cca3.ngrok.com/create_product.php";
+    private static String url_create_product = "http://783d1e28.ngrok.com/create_product.php";
     private static String url_all_products = "http://5b3341d8.ngrok.com/get_all_products.php";
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_PRODUCTS = "products";
@@ -74,7 +74,7 @@ public class DisplayAllSongs extends Activity implements MediaPlayerControl {
         controller.hide();
         super.onStop();
     }
-    String str;
+String str;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,14 +82,12 @@ public class DisplayAllSongs extends Activity implements MediaPlayerControl {
         Bundle extras= getIntent().getExtras();
         str=extras.getString("product");
         Log.d("shib1",str);
-        setContentView(R.layout.displayallsongs);
-        songView = (ListView) findViewById(R.id.song_list1);
+        setContentView(R.layout.activity_main);
+        songView = (ListView) findViewById(R.id.song_list);
         songList = new ArrayList<Song>();
 
-            getSongList();
-
-       // new UpdateDB().execute();
-
+         new UpdateDB().execute();
+/*
 
         Collections.sort(songList, new Comparator<Song>() {
             public int compare(Song a, Song b) {
@@ -99,7 +97,7 @@ public class DisplayAllSongs extends Activity implements MediaPlayerControl {
         SongAdapter songAdt = new SongAdapter(this, songList);
         songView.setAdapter(songAdt);
         setController();
-
+        */
 
     }
 
@@ -153,17 +151,17 @@ public class DisplayAllSongs extends Activity implements MediaPlayerControl {
 
 
     class UpdateDB extends AsyncTask<String, String, Void> {
-        // List<NameValuePair> params1 = new ArrayList<NameValuePair>();
-        // public UpdateDB(List<NameValuePair> p)
+       // List<NameValuePair> params1 = new ArrayList<NameValuePair>();
+       // public UpdateDB(List<NameValuePair> p)
         @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            pDialog = new ProgressDialog(DisplayAllSongs.this);
-            pDialog.setMessage("Loading products. Please wait...");
-            pDialog.setIndeterminate(false);
-            pDialog.setCancelable(false);
-            pDialog.show();
-        }
+       protected void onPreExecute() {
+           super.onPreExecute();
+           pDialog = new ProgressDialog(FirstPage.this);
+           pDialog.setMessage("Loading products. Please wait...");
+           pDialog.setIndeterminate(false);
+           pDialog.setCancelable(false);
+           pDialog.show();
+       }
         @Override
         protected Void doInBackground(String... hi) {
 
@@ -201,11 +199,11 @@ public class DisplayAllSongs extends Activity implements MediaPlayerControl {
                     params.add(new BasicNameValuePair("Artist", thisArtist));
                     params.add(new BasicNameValuePair("Year", thisYear ));
                     params.add(new BasicNameValuePair("task", str ));
-                    // new UpdateDB(params).execute();
+                   // new UpdateDB(params).execute();
                     JSONObject json = jsonParser.makeHttpRequest(url_create_product,"POST", params);
-                    // JSONObject json = jsonParser.makeHttpRequest(url_all_products,"POST", params);
-                    //   Log.d("All Products: ", json.toString());
-                    //  Log.d("Debug", json.toString());
+                   // JSONObject json = jsonParser.makeHttpRequest(url_all_products,"POST", params);
+                 //   Log.d("All Products: ", json.toString());
+                  //  Log.d("Debug", json.toString());
                     int success = 0;
                     try {
                         success = json.getInt("success");
@@ -246,7 +244,7 @@ public class DisplayAllSongs extends Activity implements MediaPlayerControl {
                             return a.getTitle().compareTo(b.getTitle());
                         }
                     });
-                    SongAdapter songAdt = new SongAdapter(DisplayAllSongs.this, songList);
+                    SongAdapter songAdt = new SongAdapter(FirstPage.this, songList);
                     songView.setAdapter(songAdt);
                     setController();
                 }
@@ -258,7 +256,7 @@ public class DisplayAllSongs extends Activity implements MediaPlayerControl {
 
 
 
-    int i=0;
+        int i=0;
     private ArrayList<String> sl = new ArrayList<String>();
 
 
@@ -295,7 +293,7 @@ public class DisplayAllSongs extends Activity implements MediaPlayerControl {
                 params.add(new BasicNameValuePair("Album", thisAlbum));
                 params.add(new BasicNameValuePair("Artist", thisArtist));
                 params.add(new BasicNameValuePair("Year", thisYear ));
-                //    new UpdateDB(params).execute();
+            //    new UpdateDB(params).execute();
 
 
                 songList.add(new Song(thisId, thisTitle, thisArtist));
