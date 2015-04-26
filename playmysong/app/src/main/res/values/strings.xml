@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Mymusic</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="tags">Tags</string>
+    <string-array name="planets_array">
+        <item>Fast</item>
+        <item>Slow</item>
+        <item>Happy</item>
+        <item>Sad</item>
+        <item>Romantic</item>
+        <item>Instrumental</item>
+        <item>Adult</item>
+        <item>Kids</item>
+    </string-array>
+    <string-array name="tasks">
+        <item>Allsongs</item>
+        <item>Album</item>
+        <item>Artist</item>
+
+    </string-array>
+
+</resources>
