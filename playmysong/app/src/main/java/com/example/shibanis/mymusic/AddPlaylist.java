@@ -108,7 +108,7 @@ public class AddPlaylist extends Activity {
                         Cursor c_songs = db.rawQuery(query_songs,null);
                         c_songs.moveToFirst();
                         while(c_songs.moveToNext()) {
-                            Toast.makeText(getApplicationContext(), "" + sel[j], Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(getApplicationContext(), "" + sel[j], Toast.LENGTH_SHORT).show();
                             String q = query + "'" + c_songs.getString(0) + "');";
                             db.execSQL(q);
                         }
@@ -116,7 +116,7 @@ public class AddPlaylist extends Activity {
                     //Toast.makeText(getApplicationContext(),""+sel[j],Toast.LENGTH_LONG).show();
                 }
 
-                Cursor c = db.rawQuery("SELECT * FROM playlist", null);
+                /*Cursor c = db.rawQuery("SELECT * FROM playlist", null);
 
                 c.moveToFirst();
                 //Toast.makeText(getApplicationContext(),c.getString(0) + "",Toast.LENGTH_LONG).show();
@@ -128,7 +128,7 @@ public class AddPlaylist extends Activity {
                 }
                 Toast.makeText(getApplicationContext(), (String) buffer.toString(),
                         Toast.LENGTH_LONG).show();
-
+*/
                 // Intent i = new Intent(getApplicationContext(), MainActivity.class);
 
                 //startActivity(i);
