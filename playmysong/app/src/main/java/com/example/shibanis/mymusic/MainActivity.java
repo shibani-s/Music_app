@@ -55,13 +55,13 @@ import org.json.JSONObject;
 
 public class MainActivity extends ActionBarActivity {
     final String PREFS_NAME = "MyPrefsFile";
-    private static String url_create_product = "http://49f9a055.ngrok.com/createproduct.php";
+    private static String url_create_product = "http://6b55cca7.ngrok.com/createproduct.php";
     private static final String TAG_PRODUCTS = "products";
     private static final String TAG_PID = "Name";
     private static final String TAG_NAME = "Tag";
     private static final String TAG_VALUE = "Value";
 
-    private static String url_get_product = "http://49f9a055.ngrok.com/gettags.php";
+    private static String url_get_product = "http://6b55cca7.ngrok.com/gettags.php";
     JSONArray products = null;
     // Array of strings...
 
@@ -79,13 +79,13 @@ public class MainActivity extends ActionBarActivity {
             //the app is being launched for first time, do something
             Log.d("Comments", "First time");
             SQLiteDatabase db = openOrCreateDatabase("se_project", Context.MODE_PRIVATE,null);
-            db.execSQL("CREATE TABLE song(sid BIGINT,title VARCHAR,album VARCHAR, artist VARCHAR,year VARCHAR);");
-            db.execSQL("CREATE TABLE tagged(sid BIGINT,tag VARCHAR,value VARCHAR, FOREIGN KEY (sid) references song(sid));");
-            db.execSQL("CREATE TABLE  playlist(pl_name VARCHAR,tags VARCHAR);");
+            db.execSQL("CREATE TABLE IF NOT EXISTS song(sid BIGINT,title VARCHAR,album VARCHAR, artist VARCHAR,year VARCHAR);");
+            db.execSQL("CREATE TABLE IF NOT EXISTS tagged(sid BIGINT,tag VARCHAR,value VARCHAR, FOREIGN KEY (sid) references song(sid));");
+            db.execSQL("CREATE TABLE IF NOT EXISTS playlist(pl_name VARCHAR,sid BIGINT, FOREIGN KEY (sid) references song(sid));");
 
             //db.execSQL("DELETE FROM playlist");
-            db.execSQL("INSERT INTO playlist VALUES('Driving','Happy');");
-            db.execSQL("INSERT INTO playlist VALUES('Driving','Fast');");
+            //db.execSQL("INSERT INTO playlist VALUES('Driving','Happy');");
+            //db.execSQL("INSERT INTO playlist VALUES('Driving','Fast');");
           //  db.execSQL("INSERT INTO tagged VALUES('Driving','Fast','90');");
             // first time task
             new UpdateDB().execute();

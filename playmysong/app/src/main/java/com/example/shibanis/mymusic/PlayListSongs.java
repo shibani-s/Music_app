@@ -128,37 +128,36 @@ public class PlayListSongs extends ActionBarActivity implements MediaPlayerContr
             musicBound = false;
         }
     };
-public void getSongList()
-{
-    SQLiteDatabase db = openOrCreateDatabase("se_project", MODE_PRIVATE, null);
-    Cursor c = db.rawQuery("SELECT tags FROM playlist WHERE pl_name='"+ str +"'", null);
-    Set Play = new HashSet();
-    c.moveToFirst();
-    //Toast.makeText(getApplicationContext(),c.getString(0) + "",Toast.LENGTH_LONG).show();
-    StringBuffer buffer = new StringBuffer();
-    int i = 0;
-    if (c.moveToFirst()) {
-        String tgname=c.getString(0);
-        Log.d("tgname",tgname);
-        Cursor ci = db.rawQuery("SELECT * FROM tagged WHERE tag='Fast'", null);
-      if(ci.moveToFirst()){
-            String si = ci.getString(0);
-            Log.d("mysi", si);
-            System.out.print("shbs hey");
-            Cursor co = db.rawQuery("SELECT * FROM song WHERE sid='" + si + "'", null);
-          co.moveToFirst();
-            songList.add(new Song(co.getLong(0), co.getString(1), co.getString(3), co.getString(4)));
-            Log.d("mystr",co.getLong(0) + co.getString(1) + co.getString(3) + co.getString(4));
+
+
+
+    public void getSongList()
+    {
+        SQLiteDatabase db = openOrCreateDatabase("se_project", MODE_PRIVATE, null);
+        Cursor c = db.rawQuery("SELECT sid FROM playlist WHERE pl_name='"+ str +"'", null);
+        Set Play = new HashSet();
+        c.moveToFirst();
+        //Toast.makeText(getApplicationContext(),c.getString(0) + "",Toast.LENGTH_LONG).show();
+        StringBuffer buffer = new StringBuffer();
+        int i = 0;
+        if (c.moveToFirst()) {
+            while(!c.isAfterLast()) {
+                String songid = c.getString(0);
+                Log.d("songid", songid);
+                Cursor co = db.rawQuery("SELECT * FROM song WHERE sid='" + songid + "'", null);
+                co.moveToFirst();
+                songList.add(new Song(co.getLong(0), co.getString(1), co.getString(3), co.getString(4)));
+                Log.d("mystr", co.getLong(0) + co.getString(1) + co.getString(3) + co.getString(4));
+
+            }
         }
 
+        Toast.makeText(getApplicationContext(), (String) buffer.toString(),
+                Toast.LENGTH_LONG).show();
+
+        ArrayList<String> Tasks = new ArrayList<String>(Play);
+
     }
-
-    Toast.makeText(getApplicationContext(), (String) buffer.toString(),
-            Toast.LENGTH_LONG).show();
-
-    ArrayList<String> Tasks = new ArrayList<String>(Play);
-
-}
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
