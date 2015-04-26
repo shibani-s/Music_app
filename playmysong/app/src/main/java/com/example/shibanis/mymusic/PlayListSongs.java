@@ -139,16 +139,18 @@ public class PlayListSongs extends ActionBarActivity implements MediaPlayerContr
         c.moveToFirst();
         //Toast.makeText(getApplicationContext(),c.getString(0) + "",Toast.LENGTH_LONG).show();
         StringBuffer buffer = new StringBuffer();
+        String songid="";
+        Cursor co;
         int i = 0;
         if (c.moveToFirst()) {
             while(!c.isAfterLast()) {
-                String songid = c.getString(0);
+                songid = c.getString(0);
                 Log.d("songid", songid);
-                Cursor co = db.rawQuery("SELECT * FROM song WHERE sid='" + songid + "'", null);
-                co.moveToFirst();
-                songList.add(new Song(co.getLong(0), co.getString(1), co.getString(3), co.getString(4)));
-                Log.d("mystr", co.getLong(0) + co.getString(1) + co.getString(3) + co.getString(4));
-
+                co = db.rawQuery("SELECT * FROM song WHERE sid='" + songid + "'", null);
+                if(co.moveToFirst()) {
+                    songList.add(new Song(co.getLong(0), co.getString(1), co.getString(3), co.getString(4)));
+                    Log.d("mystr", co.getLong(0) + co.getString(1) + co.getString(3) + co.getString(4));
+                }
             }
         }
 

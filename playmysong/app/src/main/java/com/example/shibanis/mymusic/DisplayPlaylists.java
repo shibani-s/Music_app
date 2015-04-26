@@ -55,15 +55,15 @@ public class DisplayPlaylists extends Activity {
         //Toast.makeText(getApplicationContext(),c.getString(0) + "",Toast.LENGTH_LONG).show();
         StringBuffer buffer = new StringBuffer();
         int i = 0;
-        while (c.moveToNext()) {
+  /*      while (c.moveToNext()) {
             buffer.append("name : " + c.getString(0));
              Play.add(c.getString(0));
             buffer.append("tag : " + c.getString(1) + "\n");
-        }
+       }
 
         Toast.makeText(getApplicationContext(), (String) buffer.toString(),
                 Toast.LENGTH_LONG).show();
-
+*/
     ArrayList<String> Tasks = new ArrayList<String>(Play);
 
 
@@ -107,7 +107,7 @@ public class DisplayPlaylists extends Activity {
     }
 
 
-    public void getalbumlist() {
+   /* public void getalbumlist() {
         //retrieve song info
         ContentResolver musicResolver = getContentResolver();
         Uri musicUri = android.provider.MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
@@ -151,7 +151,7 @@ public class DisplayPlaylists extends Activity {
 
 
         }
-    }
+    }*/
 }
 
 

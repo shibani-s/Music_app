@@ -98,14 +98,20 @@ public class AddPlaylist extends Activity {
                 String name = inputName.getText().toString();
                 Log.d("myname",name);
                 String query = "INSERT INTO playlist VALUES('" + name+ "',";
-
+                String query_songs ="";
                 boolean[] sel = inputPrice.getSelected();
                 for(int j=0;j<sel.length;j++)
                 {
                     if(sel[j])
                     {
-                        String q = query + "'" + items.get(j) + "');";
-                        db.execSQL(q);
+                        query_songs = "SELECT sid FROM song s, tagged t WHERE s.sid=t.sid AND t.tag="+items.get(j);
+                        Cursor c_songs = db.rawQuery(query_songs,null);
+                        c_songs.moveToFirst();
+                        while(c_songs.moveToNext()) {
+                            Toast.makeText(getApplicationContext(), "" + sel[j], Toast.LENGTH_SHORT).show();
+                            String q = query + "'" + c_songs.getString(0) + "');";
+                            db.execSQL(q);
+                        }
                     }
                     //Toast.makeText(getApplicationContext(),""+sel[j],Toast.LENGTH_LONG).show();
                 }
