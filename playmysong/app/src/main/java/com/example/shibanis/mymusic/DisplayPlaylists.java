@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -41,30 +42,35 @@ import org.apache.http.message.BasicNameValuePair;
 public class DisplayPlaylists extends Activity {
 
     // Array of strings...
+    EditText inputName;
 
     Set Task = new HashSet();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.displayplaylists);
         //getalbumlist();
+        inputName = (EditText) findViewById(R.id.playlist_name);
+
         SQLiteDatabase db = openOrCreateDatabase("se_project", MODE_PRIVATE, null);
         Cursor c = db.rawQuery("SELECT * FROM playlist", null);
         Set Play = new HashSet();
-        c.moveToFirst();
-        //Toast.makeText(getApplicationContext(),c.getString(0) + "",Toast.LENGTH_LONG).show();
-        StringBuffer buffer = new StringBuffer();
-        int i = 0;
-  /*      while (c.moveToNext()) {
-            buffer.append("name : " + c.getString(0));
-             Play.add(c.getString(0));
-            buffer.append("tag : " + c.getString(1) + "\n");
-       }
+        if (c.moveToFirst()) {
+            //Toast.makeText(getApplicationContext(),c.getString(0) + "",Toast.LENGTH_LONG).show();
+            StringBuffer buffer = new StringBuffer();
+            int i = 0;
+            while (c.moveToNext()) {
+                buffer.append("name : " + c.getString(0));
+//------------------------------------------------------check if play has unique names..
+                Play.add(c.getString(0));
+                buffer.append("tag : " + c.getString(1) + "\n");
+            }
 
-        Toast.makeText(getApplicationContext(), (String) buffer.toString(),
-                Toast.LENGTH_LONG).show();
-*/
-    ArrayList<String> Tasks = new ArrayList<String>(Play);
+            Toast.makeText(getApplicationContext(), (String) buffer.toString(),
+                    Toast.LENGTH_LONG).show();
+        }
+        ArrayList<String> Tasks = new ArrayList<String>(Play);
 
 
         //   Tasks = Task.toArray(new ArrayList<String>);
@@ -73,7 +79,6 @@ public class DisplayPlaylists extends Activity {
 
         ListView listView = (ListView) findViewById(R.id.song_list);
         listView.setAdapter(adapter);
-
 
 
         // listening to single list item on click
@@ -97,16 +102,18 @@ public class DisplayPlaylists extends Activity {
         final Button button = (Button) findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), AddPlaylist.class);
+                Intent i = new Intent(getApplicationContext(), add_man_playlist.class);
                 // sending data to new activity
+                String name = inputName.getText().toString();
 
+                i.putExtra("product", name);
 
                 startActivity(i);
             }
         });
     }
 
-
+}
    /* public void getalbumlist() {
         //retrieve song info
         ContentResolver musicResolver = getContentResolver();
@@ -152,6 +159,6 @@ public class DisplayPlaylists extends Activity {
 
         }
     }*/
-}
+
 
 

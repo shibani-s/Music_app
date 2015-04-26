@@ -153,8 +153,8 @@ public class MainActivity extends ActionBarActivity {
                     i.putExtra("product", product);
                     startActivity(i);
                 }
-                else if(product.equals("Year")) {
-                    Intent i = new Intent(getApplicationContext(), DisplayYear.class);
+                else if(product.equals("Tag Page")) {
+                    Intent i = new Intent(getApplicationContext(), AddPlaylist.class);
                     // sending data to new activity
 
                     i.putExtra("product", product);
