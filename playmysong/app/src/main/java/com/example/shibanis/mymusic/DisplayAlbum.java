@@ -119,6 +119,7 @@ public class DisplayAlbum extends Activity {
 
         }
     }
+
 }
 
 

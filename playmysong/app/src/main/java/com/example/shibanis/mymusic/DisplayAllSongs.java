@@ -88,9 +88,9 @@ public class DisplayAllSongs extends ActionBarActivity implements MediaPlayerCon
         songView = (ListView) findViewById(R.id.song_list1);
         songList = new ArrayList<Song>();
 
-            getSongList();
+        getSongList();
 
-       // new UpdateDB().execute();
+        // new UpdateDB().execute();
 
 
         Collections.sort(songList, new Comparator<Song>() {
@@ -314,7 +314,7 @@ public class DisplayAllSongs extends ActionBarActivity implements MediaPlayerCon
         super.onStart();
         if(playIntent==null){
             playIntent = new Intent(this, MusicService.class);
-           bindService(playIntent, musicConnection, Context.BIND_AUTO_CREATE);
+            bindService(playIntent, musicConnection, Context.BIND_AUTO_CREATE);
             startService(playIntent);
         }
     }
@@ -331,7 +331,7 @@ public class DisplayAllSongs extends ActionBarActivity implements MediaPlayerCon
     @Override
     protected void onDestroy() {
         super.onDestroy();
-       stopService(playIntent);
+        stopService(playIntent);
         musicSrv=null;
 
     }

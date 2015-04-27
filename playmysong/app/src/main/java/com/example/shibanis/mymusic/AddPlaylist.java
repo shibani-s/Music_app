@@ -104,7 +104,7 @@ public class AddPlaylist extends Activity {
                 {
                     if(sel[j])
                     {
-                        query_songs = "SELECT sid FROM song s, tagged t WHERE s.sid=t.sid AND t.tag="+items.get(j);
+                        query_songs = "SELECT sid FROM tagged WHERE tag="+items.get(j)+";";
                         Cursor c_songs = db.rawQuery(query_songs,null);
                         c_songs.moveToFirst();
                         while(c_songs.moveToNext()) {

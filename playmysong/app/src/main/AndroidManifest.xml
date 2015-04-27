@@ -62,6 +62,9 @@
         <activity
             android:name=".PlayListSongs"
             android:label="Mymusic"></activity>
+        <activity
+            android:name=".add_man_playlist"
+            android:label="Mymusic"></activity>
 
         <service android:name="com.example.shibanis.mymusic.MusicService" />
 

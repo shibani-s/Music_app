@@ -104,9 +104,9 @@ public class DisplayPlaylists extends Activity {
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), add_man_playlist.class);
                 // sending data to new activity
-                String name = inputName.getText().toString();
+                String product = inputName.getText().toString();
 
-                i.putExtra("product", name);
+                i.putExtra("product", product);
 
                 startActivity(i);
             }

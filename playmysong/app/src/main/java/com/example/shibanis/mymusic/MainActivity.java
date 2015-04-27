@@ -79,9 +79,9 @@ public class MainActivity extends ActionBarActivity {
             //the app is being launched for first time, do something
             Log.d("Comments", "First time");
             SQLiteDatabase db = openOrCreateDatabase("se_project", Context.MODE_PRIVATE,null);
-            db.execSQL("CREATE TABLE IF NOT EXISTS song(sid BIGINT,title VARCHAR,album VARCHAR, artist VARCHAR,year VARCHAR);");
-            db.execSQL("CREATE TABLE IF NOT EXISTS tagged(sid BIGINT,tag VARCHAR,value VARCHAR, FOREIGN KEY (sid) references song(sid));");
-            db.execSQL("CREATE TABLE IF NOT EXISTS playlist(pl_name VARCHAR,sid BIGINT, FOREIGN KEY (sid) references song(sid));");
+            db.execSQL("CREATE TABLE IF NOT EXISTS song(sid BIGINT PRIMARY KEY,title VARCHAR,album VARCHAR, artist VARCHAR,year VARCHAR);");
+            db.execSQL("CREATE TABLE IF NOT EXISTS tagged(sid BIGINT,tag VARCHAR, PRIMARY KEY(sid,tag),value VARCHAR, FOREIGN KEY (sid) references song(sid));");
+            db.execSQL("CREATE TABLE IF NOT EXISTS playlist(pl_name VARCHAR ,sid BIGINT, PRIMARY KEY (pl_name,sid), FOREIGN KEY (sid) references song(sid));");
 
             //db.execSQL("DELETE FROM playlist");
             //db.execSQL("INSERT INTO playlist VALUES('Driving','Happy');");
@@ -114,7 +114,7 @@ public class MainActivity extends ActionBarActivity {
         Tasks.add("Artists");
         Tasks.add("Albums");
         Tasks.add("Allsongs");
-        Tasks.add("Year");
+        Tasks.add("Tag Page");
 
 
         adapter = new ArrayAdapter<String>(this,

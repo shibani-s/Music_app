@@ -152,7 +152,7 @@ public class DisplayAlbumSongs extends Activity implements MediaPlayerControl {
 
 
 
-    class UpdateDB extends AsyncTask<String, String, Void> {
+   /* class UpdateDB extends AsyncTask<String, String, Void> {
         // List<NameValuePair> params1 = new ArrayList<NameValuePair>();
         // public UpdateDB(List<NameValuePair> p)
         @Override
@@ -255,7 +255,7 @@ public class DisplayAlbumSongs extends Activity implements MediaPlayerControl {
         }
 
     }
-
+*/
 
 
     int i=0;
